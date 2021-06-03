@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <carousel :items-to-show="1" :snapAlign="center">
+    <carousel :items-to-show="1" snapAlign="center">
       <slide v-for="image of images" :key="image.alt">
         <div>
           <img :src="image.source" :alt="image.alt" />
@@ -36,27 +36,34 @@ export default {
 };
 </script>
 <style lang="scss">
-.carousel {
-  width: 700px!important;
-}
-.carousel__track {
-  width: 700px!important;
-}
-.carousel__slide {
-  width: 100%!important
-}
-.carousel__pagination-button{
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
 .container {
-  --carousel-color-primary: rgb(85, 84, 84);
-  --carousel-color-secondary: rgb(158, 158, 158);
-  width: 700px;
+  --carousel-color-primary: #fff;
+  --carousel-color-secondary: transparent;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #00287a;
+}
+.carousel {
+  width: 100%;
+}
+.carousel__track {
+  width: inherit;
+}
+.carousel__slide {
+  width: inherit;
+  div {
+    img {
+      /* width: 60%; */
+      height: 100%;
+    }
+  }
+}
+.carousel__pagination-button{
+  width: 10px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #eee
 }
 </style>

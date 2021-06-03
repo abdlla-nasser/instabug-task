@@ -3,9 +3,9 @@
     @click="onClick"
     :style="{ background: color, color: textColor }"
     :disabled="disabled"
-    class="btn"
+    :class="{ disabled: disabled }"
   >
-    <img class="button-img" v-if="image.source" :src="image.source" alt="image.alt"/>
+    <img class="button-img" v-if="image && image.source" :src="image.source" alt="image.alt"/>
     <span>{{ text }}</span>
   </button>
 </template>
@@ -41,6 +41,7 @@ button{
   border-radius: 5px;
   box-shadow: 3px 6px 12px 1px #949494;
   margin: 10px auto;
+  cursor: pointer;
 }
 button span {
   width:100%;
@@ -49,5 +50,8 @@ button span {
   width: 20px;
   height: 20px;
   color:white;
+}
+.disabled {
+  background: rgb(179, 178, 178)!important;
 }
 </style>
