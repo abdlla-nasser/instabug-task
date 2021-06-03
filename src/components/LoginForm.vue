@@ -1,20 +1,20 @@
 <template>
   <div class="login-form">
-    <div>
+    <div class="center">
       <img :src="instabugIcon" alt="instabug icon" />
       <h1>Login To Instabug</h1>
       <buttons-group />
       <h3><span>OR</span></h3>
-      <form>
+      <form @submit="handleLogin">
         <label for="workemail">Work Email</label>
         <input required type="email" id="workemail" name="email" placeholder="Work Email" v-model="email" />
-        <div id="label-div">
+        <div class="label-div">
         <label for="password">Password</label>
         <a>Forgot Password?</a>
         </div>
         <input required type="password" id="password" name="password" placeholder="Password" v-model="password" />
-        <Button text="Log In" color="#00287a" textColor="white" :disabled="disabled" :cb="handleLogin"/>
-        <div id="label-div">
+        <Button type="submit" text="Log In" color="#00287a" textColor="white" :disabled="disabled"/>
+        <div class="label-div">
           <p>don't have an account? <a>Sign Up</a></p>
           <a>Log In via SSO</a>
         </div>
@@ -32,7 +32,7 @@ export default {
     ButtonsGroup,
     Button,
   },
-  props: ["cb"],
+  props: ["cb", "error"],
   data() {
     return {
       instabugIcon,
@@ -48,13 +48,21 @@ export default {
   },
   methods: {
     handleLogin(e){
-      console.log("clicked")
-      this.props.cb({ email: this.email, password: this.password })
+      console.log(e)
+      e.preventDefault();
+      this.cb({ email: this.email, password: this.password })
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+a {
+  color: #1a9bfc;
+  cursor: pointer;
+}
+button:disabled {
+  cursor:not-allowed;
+}
 form {
   width: 80%;
   display: flex;
@@ -67,11 +75,14 @@ form {
     margin: 10px 0; 
     box-sizing: border-box;
   }
-  #label-div {
+  .label-div {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    p {
+      margin: 0;
+    }
   }
 }
 .login-form {
@@ -79,9 +90,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.login-form {
-  div {
+  .center {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -98,10 +107,9 @@ h3 {
   border-bottom: 1px solid #000; 
   line-height: 0.1em;
   margin: 10px 0 20px; 
+  span { 
+    background:#fff; 
+    padding:0 10px; 
+  }
 } 
-
-h3 span { 
-  background:#fff; 
-  padding:0 10px; 
-}
 </style>

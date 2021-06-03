@@ -60,6 +60,9 @@ export default {
     }
   }
 }
+.carousel__pagination {
+  margin-left: -40px;
+}
 .carousel__pagination-button{
   width: 10px;
   height: 14px;

@@ -12,7 +12,7 @@ export const signIn = ({ email, password }) => {
   let found = users.find((user) => user.email === email);
   if (found) {
     if (found.password === password) {
-      return found;
+      return { user: found, error: null };
     } else {
       return { error: "Password is Incorrect", passwordError: true };
     }

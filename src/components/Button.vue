@@ -4,6 +4,7 @@
     :style="{ background: color, color: textColor }"
     :disabled="disabled"
     :class="{ disabled: disabled }"
+    :type="type"
   >
     <img class="button-img" v-if="image && image.source" :src="image.source" alt="image.alt"/>
     <span>{{ text }}</span>
@@ -18,6 +19,7 @@ export default {
     textColor: String,
     image: { source: String, alt: String },
     disabled: Boolean,
+    type:String,
     cb: Function,
   },
   methods: {

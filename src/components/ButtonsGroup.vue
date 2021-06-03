@@ -31,8 +31,8 @@ export default {
 }
 </script>
 <style scoped>
-.button-group{
-  width: 100%;
+.button-group {
+  width: 90%;
   margin-bottom: 20px;
 }
 </style>
