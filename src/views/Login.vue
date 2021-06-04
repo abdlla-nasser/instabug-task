@@ -22,12 +22,13 @@ export default {
   },
   methods: {
     handleLogin(user) {
-      this.signIn(user)
+      let res = this.signIn(user);
       if(this.error?.error){
         this.errorObj = this.error
       } else if (this.user?.email) {
         this.userObj = this.user
       }
+      return res;
     }
   }
 }

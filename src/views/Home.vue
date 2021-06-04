@@ -2,6 +2,7 @@
   <div class="home">
     <div>
     <img alt="Vue logo" src="../assets/instabug-logo-icon-color.svg" />
+    <h3>Welcome to {{user?.email}}</h3>
     <Button text="Sign Out" color="#00287a" :cb="signOut" />
     </div>
   </div>

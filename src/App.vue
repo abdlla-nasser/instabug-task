@@ -1,42 +1,45 @@
 <template>
-  <router-view :user="user" :error="error" :signIn="handleSignIn" :signOut="handleSignOut"/>
+  <router-view
+    :user="user"
+    :error="error"
+    :signIn="handleSignIn"
+    :signOut="handleSignOut"
+  />
 </template>
 
 <script>
-import { signIn, signOut } from './data'
+import { signIn, signOut } from "./data";
 export default {
   name: "App",
-  data () {
+  data() {
     return {
       user: null,
       error: null,
-    }
+    };
   },
-  mounted () {
-    let user = JSON.parse(localStorage.getItem("user"))
+  mounted() {
+    let user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-      this.user = user
-    }
-    else {
-      this.$router.push("/login")
+      this.user = user;
     }
   },
   methods: {
-    handleSignIn (user) {
-      let res = signIn(user)
-      if(res.user){
-        this.user = res.user
+    handleSignIn(user) {
+      let res = signIn(user);
+      if (res.user) {
+        this.user = res.user;
         this.$router.push("/")
-      } else if(res.error){
-        this.error = res
+      } else if (res.error) {
+        this.error = res;
       }
+      return res;
     },
     handleSignOut() {
-      this.user = signOut()
+      this.user = signOut();
       this.$router.push("/login")
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="scss">
 #app {
@@ -46,11 +49,11 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-body{
+body {
   padding: 0;
   margin: 0;
 }
-.page{
+.page {
   display: flex;
   flex-direction: row;
   height: 100vh;
