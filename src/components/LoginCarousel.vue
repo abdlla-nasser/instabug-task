@@ -1,21 +1,16 @@
 <template>
   <div class="container">
-    <carousel :items-to-show="1" snapAlign="center">
-      <slide v-for="image of images" :key="image.alt">
-        <div>
-          <img :src="image.source" :alt="image.alt" />
-        </div>
-      </slide>
-      <template #addons>
-        <pagination />
-      </template>
-    </carousel>
+    <div class="block">
+      <el-carousel trigger="click" :interval="2000" arrow="never" height="350px">
+        <el-carousel-item v-for="item in images" :key="item.alt">
+          <img :src="item.source" :alt="item.alt" />
+        </el-carousel-item>
+      </el-carousel>
+
+    </div>
   </div>
 </template>
 <script>
-
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination } from 'vue3-carousel';
 import image1 from "../assets/Product-overview.svg"
 import image2 from "../assets/Products-bug-reporting.svg"
 import image3 from "../assets/Products-crash-reporting.svg"
@@ -30,43 +25,27 @@ export default {
       ]
     }
   },
-  components: {
-    Carousel, Slide, Pagination
-  }
 };
 </script>
 <style lang="scss">
 .container {
   --carousel-color-primary: #fff;
   --carousel-color-secondary: transparent;
+  background-color: #00287a;
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #00287a;
-}
-.carousel {
-  width: 100%;
-}
-.carousel__track {
-  width: inherit;
-}
-.carousel__slide {
-  width: inherit;
-  div {
-    img {
-      /* width: 60%; */
-      height: 100%;
-    }
+  div{
+    width: 100%;
   }
 }
-.carousel__pagination {
-  margin-left: -40px;
+img{
+  width: 300px;
 }
-.carousel__pagination-button{
-  width: 10px;
-  height: 14px;
+.el-carousel__button {
+  height: 15px!important;
+  width: 15px!important;
   border-radius: 50%;
-  border: 1px solid #eee
 }
 </style>

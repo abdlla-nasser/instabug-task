@@ -12,12 +12,16 @@ export const signIn = ({ email, password }) => {
   let found = users.find((user) => user.email === email);
   if (found) {
     if (found.password === password) {
+      localStorage.setItem("user", JSON.stringify(found));
       return { user: found, error: null };
     } else {
-      return { error: "Password is Incorrect", passwordError: true };
+      return { message: "Password is Incorrect", error: "password" };
     }
   } else {
-    return { error: "Email Not Found", emailError: true };
+    return { message: "Email Not Found", error: "email" };
   }
 };
-export const signOut = () => null;
+export const signOut = () => {
+  localStorage.setItem("user", JSON.stringify(null));
+  return null;
+};

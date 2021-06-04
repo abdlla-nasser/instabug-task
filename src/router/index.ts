@@ -5,9 +5,15 @@ import Login from "../views/Login.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "/welcome",
     name: "Welcome",
     component: Home,
+  },
+  {
+    path: '/',
+    redirect: () => {
+      return { path: '/welcome' }
+    },
   },
   {
     path: "/login",
@@ -26,10 +32,12 @@ const routes: Array<RouteRecordRaw> = [
     component: NotFound
   }
 ];
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
+// router.beforeEach((to, from, next) => {
+//   if (to.name !== 'Login' && JSON.stringify(localStorage.getItem("user"))) next({ name: 'Login' })
+//   else next()
+// })
 export default router;

@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <Button text="Log In" color="#00287a" />
+    <div>
+    <img alt="Vue logo" src="../assets/instabug-logo-icon-color.svg" />
+    <Button text="Sign Out" color="#00287a" :cb="signOut" />
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
+<script>
 import Button from "@/components/Button.vue";
 
-@Options({
+export default {
   components: {
     Button,
   },
-})
-export default class Home extends Vue {}
+  props: ["user", "signOut"],
+}
 </script>
+<style lang="scss" scoped>
+.home {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    img {
+      margin-top: 20px;
+      width: 300px
+    }
+  }
+}
+</style>

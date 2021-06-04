@@ -1,34 +1,32 @@
 <template>
   <div class="page">
     <login-carousel />
-    <login-form :cb="handleLogin" :error="error"/>
+    <login-form :cb="handleLogin" :error="errorObj"/>
   </div>
 </template>
 <script>
 import LoginCarousel from '@/components/LoginCarousel.vue';
 import LoginForm from '@/components/LoginForm.vue';
-import { signIn } from "../data";
 export default {
   name: "Login",
-  props: ["cb"],
+  props: ["user", "error", "signIn"],
   components: {
     LoginCarousel,
     LoginForm,
   },
   data() {
     return {
-      user: null,
-      error: null,
+      errorObj: null,
+      userObj: null
     }
   },
   methods: {
     handleLogin(user) {
-      let res = signIn(user)
-      if(res.error){
-        this.error = res
-      } else if (res.user) {
-        this.user = res.user
-        this.$router.push("/")
+      this.signIn(user)
+      if(this.error?.error){
+        this.errorObj = this.error
+      } else if (this.user?.email) {
+        this.userObj = this.user
       }
     }
   }

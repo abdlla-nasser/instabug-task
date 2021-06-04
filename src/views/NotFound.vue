@@ -5,6 +5,13 @@
     <p>sorry, this page doesn't exist. What would you like to do?</p>
   </div>
 </template>
+// <script>
+//   export default {
+//     mounted(){
+
+//     }
+//   }
+// </script>
 <style lang="scss" scoped>
 img {
   width: 30%;

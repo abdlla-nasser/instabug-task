@@ -18,6 +18,7 @@
           <p>don't have an account? <a>Sign Up</a></p>
           <a>Log In via SSO</a>
         </div>
+        <div v-if="error && error.message">{{error.message}}</div>
       </form>
     </div>
   </div>
@@ -48,7 +49,6 @@ export default {
   },
   methods: {
     handleLogin(e){
-      console.log(e)
       e.preventDefault();
       this.cb({ email: this.email, password: this.password })
     }
