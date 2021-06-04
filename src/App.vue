@@ -21,7 +21,7 @@ export default {
     let user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.user = user;
-    }
+    } else this.$router.push({ name: "Login" });
   },
   methods: {
     handleSignIn(user) {
